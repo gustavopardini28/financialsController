@@ -1,0 +1,84 @@
+{
+  "transactions": [
+    {
+      "id": 1,
+      "description": "Desenvolvimento do site",
+      "type": "income",
+      "category": "venda",
+      "price": 14000,
+      "createdAt": "2022-08-29T19:36:44.505Z"
+    },
+    {
+      "description": "comida do cachorro",
+      "price": 300,
+      "category": "comida",
+      "type": "outcome",
+      "createdAt": "2022-10-14T00:41:21.112Z",
+      "id": 2
+    },
+    {
+      "description": "cafe",
+      "price": 30,
+      "category": "alimentacao",
+      "type": "income",
+      "createdAt": "2022-10-14T00:42:31.155Z",
+      "id": 3
+    },
+    {
+      "description": "caputino",
+      "price": 40,
+      "category": "comida",
+      "type": "outcome",
+      "createdAt": "2022-10-14T00:42:51.836Z",
+      "id": 4
+    },
+    {
+      "description": "caputino",
+      "price": 234,
+      "category": "alimentacao",
+      "type": "outcome",
+      "createdAt": "2022-10-16T15:21:02.849Z",
+      "id": 5
+    },
+    {
+      "description": "caputino",
+      "price": 213,
+      "category": "comida",
+      "type": "outcome",
+      "createdAt": "2022-10-16T15:21:13.029Z",
+      "id": 6
+    },
+    {
+      "description": "PS4",
+      "price": 100,
+      "category": "alimentacao",
+      "type": "income",
+      "createdAt": "2022-10-16T15:22:04.027Z",
+      "id": 7
+    },
+    {
+      "description": "PS4",
+      "price": 100,
+      "category": "alimentacao",
+      "type": "income",
+      "createdAt": "2022-10-16T15:22:04.027Z",
+      "id": 8
+    },
+    {
+      "description": "PS4",
+      "price": 100,
+      "category": "alimentacao",
+      "type": "income",
+      "createdAt": "2022-10-16T15:22:04.027Z",
+      "id": 9
+    },
+    {
+      "description": "PS4",
+      "price": 100,
+      "category": "alimentacao",
+      "type": "income",
+      "createdAt": "2022-10-16T15:22:04.027Z",
+      "id": 10
+    }
+  ]
+}
