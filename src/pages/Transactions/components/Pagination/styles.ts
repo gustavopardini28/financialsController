@@ -12,7 +12,8 @@ margin: 0.5rem auto 0;
 padding: 0 1.5rem;
 display: flex;
 justify-content: center;
-gap: 10px;
+gap: 5px;
+
 `
 export const PaginationButton = styled.button<ActiveButtonProps>`
   border:0;
