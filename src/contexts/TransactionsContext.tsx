@@ -14,6 +14,7 @@ interface TransactionContextType {
   transactions: Transaction[];
 	fetchTransactions: (query?: string) => Promise<void>;
 	createTransactions: (data:createTransactionsProps) => Promise<void>;
+	handleDeleteTransaction: (id:number) => Promise<void>;
 }
 
 interface TransactionProviderProps {
@@ -44,6 +45,14 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 		
 		setTransactions(response.data);
 	}
+
+	async function handleDeleteTransaction(id:number) {
+		api.delete('/transactions/'+id)
+		setTransactions(transactions.filter(transaction => transaction.id !== id))
+	}
+
+	
+
 	async function createTransactions(data: createTransactionsProps) {
 		const {category,description,price,type} = data;  
 
@@ -68,6 +77,7 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 			transactions,
 			fetchTransactions,
 			createTransactions,
+			handleDeleteTransaction,
 		}}>
       {children}
     </TransactionsContext.Provider>
