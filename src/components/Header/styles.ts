@@ -14,7 +14,8 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content:space-between;
   align-items:center;
-`
+
+ `
 
 export const NewTransactionButton = styled.button`
 height:50px;
@@ -29,6 +30,35 @@ cursor: pointer;
   &:hover{
     background:${props => props.theme['green-700']};
     transition: background-color 0.2s;
+  }
+
+  svg{
+    display: none;
+  }
+
+  @media (max-width:390px) { 
+    padding: 0 1rem;
+    text-indent: -9999px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    svg{
+      display: flex;
+    }
+
+  }
+
+  @media (max-width:300px) {
+    padding: 0 0.75rem;
+    text-indent: -9999px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    svg{
+      display: flex;
+    }
   }
 
 `
