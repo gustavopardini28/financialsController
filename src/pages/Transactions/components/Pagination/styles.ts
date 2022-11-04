@@ -1,4 +1,3 @@
-import * as RadioGroup from "@radix-ui/react-radio-group";
 import styled from "styled-components";
 
 interface ActiveButtonProps {
@@ -8,11 +7,13 @@ interface ActiveButtonProps {
 export const ButtonsContainer = styled.div`
 width: 100%;
 max-width:1120px;
-margin: 0.5rem auto 0;
+margin-bottom: 1rem;
 padding: 0 1.5rem;
 display: flex;
 justify-content: center;
+align-items:center;
 gap: 5px;
+
 
 `
 export const PaginationButton = styled.button<ActiveButtonProps>`

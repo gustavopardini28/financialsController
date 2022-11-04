@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const SearchFormContainer = styled.form`
+width: 100%;
+max-width:1120px;
 display:flex;
 gap:1rem;
 
@@ -36,5 +38,29 @@ button {
     color: ${props => props.theme['white']};
     transition: background-color 0.2s, color 0.2s, border-color 0,2s;
   }
+
+  @media (max-width:390px) {
+    /* display:flex;
+    align-items: center;
+    background: transparent;
+    padding:1rem;
+    border: 1px solid ${props => props.theme['green-300']};
+    color: ${props => props.theme['green-300']};
+    border-radius: 6px; */
+    text-indent: -9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+
+    svg{
+      
+    }
+    
+  
+  }
+
+
+    
 }
 `
