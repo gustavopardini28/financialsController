@@ -1,5 +1,6 @@
+import { Trash } from 'phosphor-react';
 import { useContext, useEffect, useState } from 'react';
-import {Header} from '../../components/Header';
+import { Header } from '../../components/Header';
 import { Summary } from '../../components/Summary';
 import { TransactionsContext } from '../../contexts/TransactionsContext';
 import { dateFormatter, PriceFormatter } from '../../utils/formatter';
@@ -7,30 +8,17 @@ import { Pagination } from './components/Pagination';
 import { SearchForm } from './components/SeachForm';
 import { PriceHighlight, TransactionsContainer, TransactionsTable } from './styles';
 
-interface Transaction {
-	id:number;
-	description:string;
-	type: 'income' | 'outcome';
-	price:number;
-	category:string;
-	createdAt:string;
-}
-
 export function Transactions() {
-	const [currentPage,setCurrentPage] = useState(1);
-	const [postsPerPage,setPostsPerPage] = useState(7);
-	
+	const [currentPage, setCurrentPage] = useState(1);
+	const [postsPerPage, setPostsPerPage] = useState(7);
+
 	const lastPostIndex = currentPage * postsPerPage;
-	console.log(lastPostIndex)
 	const firstPostIndex = lastPostIndex - postsPerPage;
 
-	const {transactions} = useContext(TransactionsContext);
+	const { transactions, handleDeleteTransaction } = useContext(TransactionsContext);
 
 	const currentPosts = transactions.slice(firstPostIndex, lastPostIndex);
-		
-	
-	
-	   
+
 	return (
 		<div>
 			<Header />
@@ -42,7 +30,7 @@ export function Transactions() {
 						{currentPosts.map(currentPost => {
 							return (
 								<tr key={currentPost.id}>
-									<td width='50%'>{currentPost.description}</td>
+									<td className='transactionTitle' width='50%'>{currentPost.description}</td>
 									<td>
 										<PriceHighlight variant={currentPost.type}>
 											{currentPost.type === 'outcome' && '-'}
@@ -50,20 +38,25 @@ export function Transactions() {
 										</PriceHighlight>
 									</td>
 									<td>{currentPost.category}</td>
-									<td>{dateFormatter.format(new Date(currentPost.createdAt))}</td>
+									<td>
+										{dateFormatter.format(new Date(currentPost.createdAt))}
+										<button title='Delete' onClick={() => handleDeleteTransaction(currentPost.id)}>
+											<Trash size={20} />
+										</button>
+									</td>
 								</tr>
 							)
 						})}
 					</tbody>
 				</TransactionsTable>
 			</TransactionsContainer>
-				<Pagination 
-				totalPosts={transactions.length} 
+			<Pagination
+				totalPosts={transactions.length}
 				postsPerPage={postsPerPage}
 				setCurrentPage={setCurrentPage}
 				currentPage={currentPage}
-				/>
+			/>
 		</div>
-		
+
 	)
 }
