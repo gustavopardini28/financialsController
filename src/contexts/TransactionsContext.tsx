@@ -15,6 +15,7 @@ interface TransactionContextType {
 	fetchTransactions: (query?: string) => Promise<void>;
 	createTransactions: (data:createTransactionsProps) => Promise<void>;
 	handleDeleteTransaction: (id:number) => Promise<void>;
+	alertMaximumTransaction: () => Promise<void>;
 }
 
 interface TransactionProviderProps {
@@ -33,6 +34,7 @@ export const TransactionsContext = createContext({} as TransactionContextType);
 
 export function TransactionsProvider({ children }: TransactionProviderProps) {
   const [transactions,setTransactions] = useState<Transaction[]>([]);
+	const [currentId,setCurrentId] = useState(0)
 	
 	async function fetchTransactions(query?: string) {
 		const response = await api.get('transactions', {
@@ -51,6 +53,14 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 		setTransactions(transactions.filter(transaction => transaction.id !== id))
 	}
 
+	async function alertMaximumTransaction (){
+		const response = await api.get('transactions')
+		const aux = response.data.at(-1)
+		api.delete('/transactions/'+aux.id)
+		console.log('hi')
+		setTransactions(transactions.filter(transaction => transaction.id !== aux.id))
+		console.log(transactions)
+	}
 	
 
 	async function createTransactions(data: createTransactionsProps) {
@@ -78,6 +88,7 @@ export function TransactionsProvider({ children }: TransactionProviderProps) {
 			fetchTransactions,
 			createTransactions,
 			handleDeleteTransaction,
+			alertMaximumTransaction,
 		}}>
       {children}
     </TransactionsContext.Provider>
